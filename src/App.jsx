@@ -11,10 +11,14 @@ export default function App() {
   })
   function handleformData(event) {
     const {name,type,value,checked} = event.target
-    setFormData({
-      ...formData,
-      [name]: type==="checkbox"?checked:value
+    setFormData(prevformData=>{
+        return {
+            ...prevformData,
+            [name]:type==='checkbox'?checked:value
+        }
+        
     })
+    
     
   }
   
@@ -27,7 +31,7 @@ export default function App() {
         }
         else console.log('passwords to not match')
         if (formData.okayToEmail) {
-            console.log('Thanks for signingup for our newsletter!"');
+            console.log('Thanks for signing up for our newsletter!"');
             
         }
     }
